@@ -156,6 +156,9 @@ npx skills add iart-ai/freelance-motion-skills  # شغل العملاء
 | صوت ElevenLabs | `text-to-speech`, `sound-effects`, `music`, `speech-to-text`, `voice-isolator`, `setup-api-key` |
 | شغل العملاء | `creative-brief`, `client-revisions`, `motion-pricing`, `video-delivery-specs`, `brand-motion-guidelines` |
 | هويات للعملاء | `brand-identity` |
+| ستيك مان + Flow | `directing-stickman-videos` (وضع A كامل؛ وضع B محتاج تنزيل الملفات التقيلة — مكتوب جوه السكيل إزاي) |
+| يوتيوب | `yt-script`, `yt-package`, `yt-seo`, `yt-chapters`, `yt-shorts`, `yt-edit`, `yt-retention`, `yt-viral`, `yt-plan`, `yt-audit`, `yt-comment` |
+| تصميم ثابت وفن توليدي | `canvas-design`, `theme-factory`, `algorithmic-art` |
 
 ملاحظات:
 - **Remotion** مجاني للأفراد وللشركات لحد 3 موظفين؛ لو الشركة كبرت عن كده محتاجين رخصة شركة (سكيل `remotion-license` بيوضح). **HyperFrames** مجاني بالكامل (Apache-2.0) — ده الاختيار الافتراضي.
