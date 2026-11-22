@@ -137,3 +137,28 @@ npx skills add iart-ai/freelance-motion-skills  # شغل العملاء
 4. إنت تولّد الفيديو والصوت، وتبعتهملي.
 5. أعمل المونتاج/الموشن جرافيك بالكود أو أديك خطة مونتاج على Resolve، وأراجع الجودة.
 6. أطلّع **بورد الفيسبوك** بالهوية + الكابشن.
+
+---
+
+## 7) السكيلز المتثبتة فعلًا في الريبو (`.claude/skills`)
+
+اتثبتت بـ `npx skills add <repo> -a claude-code --copy` وأي جلسة على الريبو بتشوفها تلقائيًا. المصادر والنسخ متسجلة في `skills-lock.json`، وتحدثها بـ `npx skills update -p`.
+
+| المجال | السكيلز |
+|---|---|
+| الهوية والإنتاج (بتوعنا) | `ibdaa-motion-brand`, `ibdaa-studio-workflow` |
+| المونتاج | `ffmpeg-skill` |
+| موشن بالكود — Remotion | `remotion-best-practices`, `remotion-create`, `remotion-captions`, `remotion-markup`, `remotion-multimedia`, `remotion-maps`, `remotion-render`, `remotion-studio`, `remotion-docs`, `remotion-license`, `remotion-video` |
+| موشن بالكود — HyperFrames | `hyperframes`, `hyperframes-cli`, `hyperframes-registry`, `media-use`, `style-sampling`, `reverse-any-video`, `slideshow` |
+| فن الحركة | `animation-principles`, `motion-art-direction`, `shot-composition`, `color-motion`, `beat-sync-editing`, `motion-background`, `logo-animation`, `kinetic-typography` |
+| إعلانات وسوشيال | `ad-creative-video`, `launch-video`, `testimonial-video`, `promo-video`, `photo-slideshow`, `short-form-video`, `caption-animation`, `countdown-video`, `lower-thirds`, `talking-head-b-roll` |
+| شرح تعليمي | `manim-composer`, `manimce-best-practices`, `manimgl-best-practices` |
+| صوت ElevenLabs | `text-to-speech`, `sound-effects`, `music`, `speech-to-text`, `voice-isolator`, `setup-api-key` |
+| شغل العملاء | `creative-brief`, `client-revisions`, `motion-pricing`, `video-delivery-specs`, `brand-motion-guidelines` |
+| هويات للعملاء | `brand-identity` |
+
+ملاحظات:
+- **Remotion** مجاني للأفراد وللشركات لحد 3 موظفين؛ لو الشركة كبرت عن كده محتاجين رخصة شركة (سكيل `remotion-license` بيوضح). **HyperFrames** مجاني بالكامل (Apache-2.0) — ده الاختيار الافتراضي.
+- سكيلز **ElevenLabs** بتستخدم الـ API بمفتاحك، وبتصرف من رصيد الحساب (فيه رصيد مجاني شهري). لو مش عايز تستخدم الـ API، أنا أكتبلك النص وإنت تولّده من موقع ElevenLabs زي ما بتعمل.
+- اتشالت ملفات الديمو والفيديوهات الدعائية من `ffmpeg-skill` عشان حجم الريبو.
+- اتجاهلت: `after-effects` (برنامج مدفوع)، و`product-demo-video` و`howseen-ai/claude-motion-design` (ملفاتهم فيها خطأ ومش بتتثبت)، و`lower-thirds` نسخة تيك توك (عندنا النسخة الأقوى بالخلفية الشفافة).
