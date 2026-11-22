@@ -6,148 +6,133 @@
 <link rel="stylesheet" href="../../tokens.css">
 <style>
   * { box-sizing: border-box; margin: 0; padding: 0; }
-  html, body { width: 1080px; height: 1350px; background: #fff; }
-  .post { position: relative; width: 1080px; height: 1350px; overflow: hidden; background: #fff; font-family: var(--font-body); color: var(--emtiaz-ink); }
+  html, body { width: 1080px; height: 1350px; background: #12152E; }
+  .post {
+    position: relative; width: 1080px; height: 1350px; overflow: hidden;
+    background: #12152E; color: #fff; font-family: var(--font-body);
+  }
 
-  /* photo area */
-  .photo { position: absolute; top: 0; left: 0; right: 0; height: 860px; overflow: hidden; background: #2B3163; }
+  /* photo: top of the canvas, melting into deep navy */
+  .photo {
+    position: absolute; top: 0; left: 0; width: 1080px; height: 900px;
+    -webkit-mask-image: linear-gradient(180deg, #000 0, #000 58%, transparent 100%);
+            mask-image: linear-gradient(180deg, #000 0, #000 58%, transparent 100%);
+  }
   .photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
-  .photo::after { /* soft navy grade at the bottom so the panel joins cleanly */
-    content: ""; position: absolute; inset: 0;
-    background: linear-gradient(180deg, rgba(26,31,69,.28) 0, rgba(26,31,69,0) 22%, rgba(26,31,69,0) 70%, rgba(26,31,69,.35) 100%);
-  }
-  .placeholder {
-    width: 100%; height: 100%; display: grid; place-items: center; text-align: center; padding: 120px;
-    background: radial-gradient(circle at 60% 40%, #5A5E85 0, #2B3163 55%, #12152E 100%);
-    font-family: var(--font-display); font-weight: 600; font-size: 34px; line-height: 1.6; color: #fff;
-  }
-  .placeholder small { display: block; font-family: var(--font-body); font-weight: 400; font-size: 24px; color: var(--navy-200); margin-top: 12px; }
+  .shade { position: absolute; inset: 0;
+    background:
+      linear-gradient(180deg, rgba(18,21,46,.55) 0, rgba(18,21,46,0) 18%),
+      linear-gradient(180deg, rgba(18,21,46,0) 45%, rgba(18,21,46,.85) 78%, #12152E 100%); }
+  .placeholder { width: 100%; height: 100%; background: radial-gradient(circle at 50% 40%, #5A5E85, #2B3163 60%, #12152E); }
 
-  .logo-badge {
-    position: absolute; top: 48px; right: 56px; width: 150px; height: 150px; border-radius: 50%;
-    background: #fff; display: grid; place-items: center; box-shadow: 0 12px 30px rgba(18,21,46,.25); z-index: 3;
-  }
-  .logo-badge img { width: 132px; height: 132px; border-radius: 50%; }
+  /* top bar */
+  .logo { position: absolute; top: 56px; right: 72px; width: 124px; height: 124px; border-radius: 50%;
+    background: #fff; display: grid; place-items: center; box-shadow: 0 10px 30px rgba(0,0,0,.25); }
+  .logo img { width: 112px; height: 112px; border-radius: 50%; }
+  .topic { position: absolute; top: 92px; left: 72px; display: flex; align-items: center; gap: 14px;
+    padding: 14px 26px; border-radius: 999px;
+    background: rgba(255,255,255,.14); border: 1px solid rgba(255,255,255,.28);
+    backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+    font-family: var(--font-display); font-weight: 600; font-size: 24px; letter-spacing: 0; }
+  .topic i { width: 10px; height: 10px; border-radius: 50%; background: var(--emtiaz-red); }
 
-  /* red lens from the logo orbit */
-  .lens { position: absolute; z-index: 2; pointer-events: none; }
-  .chip {
-    position: absolute; z-index: 3; direction: ltr; white-space: nowrap;
-    display: inline-flex; align-items: center; gap: 10px;
-    padding: 12px 20px; border-radius: 14px;
-    background: rgba(255,255,255,.94); backdrop-filter: blur(8px);
-    box-shadow: 0 14px 30px rgba(18,21,46,.22);
-    font-family: var(--font-mono); font-weight: 600; font-size: 23px; color: var(--emtiaz-navy);
-  }
-  .chip b { color: var(--emtiaz-red); font-weight: 600; }
-
-  /* text panel */
-  .panel {
-    position: absolute; left: 0; right: 0; top: 800px; bottom: 0; background: #fff;
-    border-radius: 48px 48px 0 0; padding: 52px 72px 0; z-index: 2;
-  }
-  .eyebrow { font-family: var(--font-mono); font-weight: 600; font-size: 21px; letter-spacing: .18em; color: var(--emtiaz-red); direction: ltr; text-align: right; }
-  .headline { margin-top: 14px; font-family: var(--font-display); font-weight: 700; color: var(--emtiaz-navy); font-size: 66px; line-height: 1.2; }
+  /* copy block */
+  .copy { position: absolute; right: 72px; left: 72px; bottom: 306px; }
+  .kicker { display: flex; align-items: center; gap: 16px;
+    font-family: var(--font-display); font-weight: 600; font-size: 26px; color: var(--red-300); }
+  .kicker::before { content: ""; width: 48px; height: 4px; border-radius: 2px; background: var(--emtiaz-red); }
+  .headline { margin-top: 20px; font-family: var(--font-display); font-weight: 700;
+    font-size: 88px; line-height: 1.12; letter-spacing: -.005em; }
   .headline em { font-style: normal; color: var(--emtiaz-red); }
-  .sub { margin-top: 14px; font-weight: 500; font-size: 28px; color: var(--navy-400); }
+  .sub { margin-top: 24px; font-weight: 400; font-size: 30px; line-height: 1.55; color: rgba(255,255,255,.78); max-width: 860px; }
 
-  .bottom {
-    position: absolute; bottom: 52px; right: 72px; left: 72px; height: 104px; z-index: 3;
-    background: var(--emtiaz-navy); border-radius: 26px;
-    display: flex; align-items: center; justify-content: space-between; padding: 0 34px;
-  }
+  /* tests strip (the lab-report motif, refined) */
+  .tests { position: absolute; right: 72px; left: 72px; bottom: 190px; display: flex; align-items: center;
+    border-top: 1px solid rgba(255,255,255,.16); border-bottom: 1px solid rgba(255,255,255,.16); height: 76px; }
+  .tests .label { font-family: var(--font-display); font-weight: 600; font-size: 22px; color: rgba(255,255,255,.6); padding-left: 28px; white-space: nowrap; }
+  .tests .list { display: flex; flex: 1; direction: ltr; justify-content: flex-end; }
+  .tests .t { padding: 0 22px; font-family: var(--font-body); font-weight: 500; font-size: 24px; color: #fff;
+    border-left: 1px solid rgba(255,255,255,.18); white-space: nowrap; }
+  .tests .t:first-child { border-left: 0; }
+
+  /* footer */
+  .footer { position: absolute; right: 72px; left: 72px; bottom: 64px; display: flex; align-items: center; justify-content: space-between; }
   .tagline { font-family: var(--font-display); font-weight: 600; font-size: 28px; color: #fff; }
   .tagline span { color: var(--red-300); }
-  .phone { display: flex; align-items: center; gap: 12px; background: #fff; border-radius: 999px; padding: 12px 26px;
-    font-family: var(--font-mono); font-weight: 600; font-size: 30px; color: var(--emtiaz-navy); direction: ltr; }
-  .phone small { font-family: var(--font-body); font-weight: 500; font-size: 21px; color: var(--navy-400); direction: rtl; }
+  .cta { display: flex; align-items: center; gap: 16px; padding: 16px 30px 16px 22px; border-radius: 999px; background: #fff; color: var(--emtiaz-navy); }
+  .cta .ic { width: 46px; height: 46px; border-radius: 50%; background: var(--emtiaz-red); display: grid; place-items: center; }
+  .cta .num { font-family: var(--font-display); font-weight: 700; font-size: 34px; letter-spacing: .02em; direction: ltr; font-variant-numeric: lining-nums tabular-nums; }
+  .cta small { font-family: var(--font-body); font-weight: 500; font-size: 20px; color: var(--navy-400); display: block; line-height: 1.1; }
 </style>
 </head>
 <body>
 <div class="post" id="post">
   <div class="photo" id="photo"></div>
-  <div class="logo-badge"><img src="../../assets/logo.jpg" alt="معمل امتياز"></div>
-  <svg class="lens" id="lens" aria-hidden="true"></svg>
-  <div id="chips"></div>
+  <div class="shade"></div>
 
-  <div class="panel">
-    <div class="eyebrow" id="eyebrow"></div>
+  <div class="logo"><img src="../../assets/logo.jpg" alt="معمل امتياز"></div>
+
+  <div class="copy">
+    <div class="kicker" id="kicker"></div>
     <h1 class="headline" id="headline"></h1>
-    <div class="sub" id="sub"></div>
+    <p class="sub" id="sub"></p>
   </div>
 
-  <div class="bottom">
+  <div class="tests"><div class="label" id="tlabel"></div><div class="list" id="tests"></div></div>
+
+  <div class="footer">
+    <div class="cta">
+      <div class="ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.5 8.5 0 0 1-12.6 7.4L3 20.5l1.6-5.2A8.5 8.5 0 1 1 21 11.5z"/></svg></div>
+      <div><small>احجز واتساب</small><div class="num">01141130500</div></div>
+    </div>
     <div class="tagline">نتيجة دقيقة.. <span>تطمّن قلبك</span></div>
-    <div class="phone"><small>احجز واتساب</small>01141130500</div>
   </div>
 </div>
 
 <script>
-/* lens: [cx, cy, r] in canvas px — the red orbit circles the focal point of each photo */
 const DESIGNS = {
   liver: {
-    eyebrow: "LIVER FUNCTION",
+    topic: "وظائف الكبد", kicker: "الكبد",
     headline: 'بيشيل عنك كتير..<br>و<em>مبيشتكيش</em>',
-    sub: "زي الكبد بالظبط. اطمّن عليه بتحليل وظائف الكبد",
-    img: "img/liver.jpg",
-    scene: "أب شايل بنته على كتافه<br>في شارع منوّر بالليل<small>صورة واقعية — هتتولد بالـ Prompt رقم 1</small>",
-    lens: [470, 330, 300],
-    chips: [["ALT", 820, 300], ["AST", 850, 390], ["Bilirubin", 790, 560], ["Albumin", 810, 650]]
+    sub: "زي الكبد بالظبط. اطمّن عليه بتحليل وظائف الكبد.",
+    tlabel: "التحاليل", tests: ["ALT", "AST", "Bilirubin", "Albumin"],
+    img: "img/liver.jpg", pos: "center 30%"
   },
   kidney: {
-    eyebrow: "KIDNEY FUNCTION",
+    topic: "وظائف الكلى", kicker: "الكلى",
     headline: 'زي الزير..<br>كليتك <em>بتصفّي</em> في صمت',
-    sub: "فلتر شغال 24 ساعة. اطمّن عليه بتحاليل وظائف الكلى",
-    img: "img/kidney.jpg",
-    scene: "إيدين ست كبيرة بتصبّ مية<br>من زير فخار في كوباية<small>صورة واقعية — هتتولد بالـ Prompt رقم 2</small>",
-    lens: [540, 470, 230],
-    chips: [["Creatinine", 80, 300], ["Urea", 110, 390], ["eGFR", 820, 560], ["Uric Acid", 770, 650]]
+    sub: "فلتر شغال 24 ساعة.. اطمّن عليه بتحاليل وظائف الكلى.",
+    tlabel: "التحاليل", tests: ["Creatinine", "Urea", "Uric Acid", "eGFR"],
+    img: "img/kidney.jpg", pos: "center 40%"
   },
   hpylori: {
-    eyebrow: "H. PYLORI",
+    topic: "جرثومة المعدة", kicker: "جرثومة المعدة",
     headline: 'في ضيف على السفرة..<br><em>مش باين</em>',
-    sub: "تحليل جرثومة المعدة: أنتيجين في البراز",
-    img: "img/hpylori.jpg",
-    scene: "سفرة عيلة مصرية من فوق<br>وإيدين كتير بتاخد من نفس الأطباق<small>صورة واقعية — هتتولد بالـ Prompt رقم 3</small>",
-    lens: [600, 470, 170],
-    chips: [["H. pylori Ag", 760, 300], ["Stool Antigen", 70, 660]]
+    sub: "مش كل ضيف بيستأذن قبل ما يدخل.. تحليل واحد يكشفه.",
+    tlabel: "التحليل", tests: ["H. pylori Stool Antigen"],
+    img: "img/hpylori.jpg", pos: "center 35%"
   }
 };
 const key = new URLSearchParams(location.search).get("d") || "liver";
 const d = DESIGNS[key];
-document.getElementById("eyebrow").textContent = d.eyebrow;
+for (const id of ["kicker", "sub", "tlabel"]) document.getElementById(id).textContent = d[id];
 document.getElementById("headline").innerHTML = d.headline;
-document.getElementById("sub").textContent = d.sub;
+document.getElementById("tests").innerHTML = d.tests.map(t => `<span class="t">${t}</span>`).join("");
 
 const photo = document.getElementById("photo");
 const img = new Image();
 img.alt = "";
+img.style.objectPosition = d.pos;
 img.onload = () => photo.replaceChildren(img);
-img.onerror = () => { photo.innerHTML = `<div class="placeholder"><div>${d.scene}</div></div>`; };
+img.onerror = () => { photo.innerHTML = '<div class="placeholder"></div>'; };
 img.src = d.img;
-
-const [cx, cy, r] = d.lens;
-const lens = document.getElementById("lens");
-lens.setAttribute("width", 1080); lens.setAttribute("height", 860);
-lens.setAttribute("viewBox", "0 0 1080 860");
-lens.style.left = 0; lens.style.top = 0;
-const a0 = 200 * Math.PI / 180, a1 = 500 * Math.PI / 180; // ~300° arc, open at the top-right like the logo
-const p = a => [cx + r * Math.cos(a), cy + r * Math.sin(a)];
-const [x0, y0] = p(a0), [x1, y1] = p(a1);
-const dots = [520, 538, 556].map(deg => p(deg * Math.PI / 180));
-lens.innerHTML = `
-  <path d="M ${x0} ${y0} A ${r} ${r} 0 1 1 ${x1} ${y1}" fill="none" stroke="#E0302A" stroke-width="4" stroke-linecap="round"/>
-  <circle cx="${x0}" cy="${y0}" r="11" fill="#E0302A"/><circle cx="${x1}" cy="${y1}" r="11" fill="#E0302A"/>
-  ${dots.map(([x, y]) => `<circle cx="${x}" cy="${y}" r="7" fill="#E0302A"/>`).join("")}`;
-
-const chips = document.getElementById("chips");
-for (const [t, x, y] of d.chips) {
-  const c = document.createElement("div");
-  c.className = "chip"; c.style.left = x + "px"; c.style.top = y + "px";
-  c.innerHTML = `<b>✓</b>${t}`;
-  chips.appendChild(c);
-}
-document.fonts.ready.then(() => document.body.dataset.ready = "1");
+document.fonts.ready.then(() => {
+  // keep the headline on 2 lines: shrink until it fits
+  const h = document.getElementById("headline");
+  let size = 88;
+  while (h.getBoundingClientRect().height > size * 1.12 * 2 + 4 && size > 60) { size -= 2; h.style.fontSize = size + "px"; }
+  document.body.dataset.ready = "1";
+});
 </script>
 </body>
 </html>
