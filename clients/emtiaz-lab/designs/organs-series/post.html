@@ -7,94 +7,73 @@
 <style>
   * { box-sizing: border-box; margin: 0; padding: 0; }
   html, body { width: 1080px; height: 1350px; background: #fff; }
-  .post {
-    position: relative; width: 1080px; height: 1350px; overflow: hidden;
-    background:
-      radial-gradient(circle at 50% 56%, #EEF1F8 0, #EEF1F8 300px, rgba(238,241,248,0) 560px),
-      #FFFFFF;
-    font-family: var(--font-body); color: var(--emtiaz-ink);
-  }
-  /* faint grid like a lab sheet */
-  .post::before {
-    content: ""; position: absolute; inset: 0;
-    background-image:
-      linear-gradient(rgba(43,49,99,.045) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(43,49,99,.045) 1px, transparent 1px);
-    background-size: 54px 54px;
-    mask-image: radial-gradient(circle at 50% 55%, #000 0, transparent 70%);
-  }
-  .top { position: absolute; top: 64px; right: 72px; left: 72px; display: flex; justify-content: space-between; align-items: flex-start; }
-  .logo { width: 150px; height: 150px; mix-blend-mode: multiply; }
-  .eyebrow {
-    font-family: var(--font-mono); font-weight: 600; font-size: 22px; letter-spacing: .18em;
-    color: var(--emtiaz-red); direction: ltr; margin-top: 22px;
-  }
-  .headline {
-    position: absolute; top: 230px; right: 72px; left: 72px;
-    font-family: var(--font-display); font-weight: 700; color: var(--emtiaz-navy);
-    font-size: 76px; line-height: 1.18; letter-spacing: -.01em;
-  }
-  .headline em { font-style: normal; color: var(--emtiaz-red); }
-  .sub { margin-top: 18px; font-family: var(--font-body); font-weight: 500; font-size: 30px; color: var(--navy-400); }
+  .post { position: relative; width: 1080px; height: 1350px; overflow: hidden; background: #fff; font-family: var(--font-body); color: var(--emtiaz-ink); }
 
-  /* stage: orbit + 3D organ */
-  .stage { position: absolute; top: 470px; left: 50%; width: 720px; height: 620px; transform: translateX(-50%); }
-  .orbit { position: absolute; inset: 0; }
-  .organ {
-    position: absolute; left: 50%; top: 50%; width: 520px; height: 520px; transform: translate(-50%, -50%);
-    object-fit: contain; filter: drop-shadow(0 40px 40px rgba(26,31,69,.18));
+  /* photo area */
+  .photo { position: absolute; top: 0; left: 0; right: 0; height: 860px; overflow: hidden; background: #2B3163; }
+  .photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .photo::after { /* soft navy grade at the bottom so the panel joins cleanly */
+    content: ""; position: absolute; inset: 0;
+    background: linear-gradient(180deg, rgba(26,31,69,.28) 0, rgba(26,31,69,0) 22%, rgba(26,31,69,0) 70%, rgba(26,31,69,.35) 100%);
   }
   .placeholder {
-    position: absolute; left: 50%; top: 50%; width: 440px; height: 440px; transform: translate(-50%, -50%);
-    border-radius: 50%; display: grid; place-items: center; text-align: center;
-    background: radial-gradient(circle at 35% 30%, #fff 0, #D9DAE3 45%, #8A8EA9 100%);
-    box-shadow: 0 40px 60px rgba(26,31,69,.18), inset -20px -30px 60px rgba(26,31,69,.25);
-    font-family: var(--font-display); font-weight: 600; font-size: 30px; color: var(--emtiaz-navy);
+    width: 100%; height: 100%; display: grid; place-items: center; text-align: center; padding: 120px;
+    background: radial-gradient(circle at 60% 40%, #5A5E85 0, #2B3163 55%, #12152E 100%);
+    font-family: var(--font-display); font-weight: 600; font-size: 34px; line-height: 1.6; color: #fff;
   }
+  .placeholder small { display: block; font-family: var(--font-body); font-weight: 400; font-size: 24px; color: var(--navy-200); margin-top: 12px; }
+
+  .logo-badge {
+    position: absolute; top: 48px; right: 56px; width: 150px; height: 150px; border-radius: 50%;
+    background: #fff; display: grid; place-items: center; box-shadow: 0 12px 30px rgba(18,21,46,.25); z-index: 3;
+  }
+  .logo-badge img { width: 132px; height: 132px; border-radius: 50%; }
+
+  /* red lens from the logo orbit */
+  .lens { position: absolute; z-index: 2; pointer-events: none; }
   .chip {
-    position: absolute; direction: ltr; white-space: nowrap;
-    display: inline-flex; align-items: center; gap: 12px;
-    padding: 14px 22px; border-radius: 16px; background: #fff;
-    border: 1.5px solid var(--navy-100);
-    box-shadow: 0 12px 28px rgba(26,31,69,.10);
-    font-family: var(--font-mono); font-weight: 600; font-size: 24px; color: var(--emtiaz-navy);
+    position: absolute; z-index: 3; direction: ltr; white-space: nowrap;
+    display: inline-flex; align-items: center; gap: 10px;
+    padding: 12px 20px; border-radius: 14px;
+    background: rgba(255,255,255,.94); backdrop-filter: blur(8px);
+    box-shadow: 0 14px 30px rgba(18,21,46,.22);
+    font-family: var(--font-mono); font-weight: 600; font-size: 23px; color: var(--emtiaz-navy);
   }
-  .chip .ok { color: var(--emtiaz-navy); }
-  .chip.hot { border-color: var(--red-200); }
-  .chip.hot .ok { color: var(--emtiaz-red); }
+  .chip b { color: var(--emtiaz-red); font-weight: 600; }
+
+  /* text panel */
+  .panel {
+    position: absolute; left: 0; right: 0; top: 800px; bottom: 0; background: #fff;
+    border-radius: 48px 48px 0 0; padding: 52px 72px 0; z-index: 2;
+  }
+  .eyebrow { font-family: var(--font-mono); font-weight: 600; font-size: 21px; letter-spacing: .18em; color: var(--emtiaz-red); direction: ltr; text-align: right; }
+  .headline { margin-top: 14px; font-family: var(--font-display); font-weight: 700; color: var(--emtiaz-navy); font-size: 66px; line-height: 1.2; }
+  .headline em { font-style: normal; color: var(--emtiaz-red); }
+  .sub { margin-top: 14px; font-weight: 500; font-size: 28px; color: var(--navy-400); }
 
   .bottom {
-    position: absolute; bottom: 64px; right: 72px; left: 72px; height: 120px;
-    background: var(--emtiaz-navy); border-radius: 28px;
-    display: flex; align-items: center; justify-content: space-between; padding: 0 40px;
+    position: absolute; bottom: 52px; right: 72px; left: 72px; height: 104px; z-index: 3;
+    background: var(--emtiaz-navy); border-radius: 26px;
+    display: flex; align-items: center; justify-content: space-between; padding: 0 34px;
   }
-  .tagline { font-family: var(--font-display); font-weight: 600; font-size: 30px; color: #fff; }
+  .tagline { font-family: var(--font-display); font-weight: 600; font-size: 28px; color: #fff; }
   .tagline span { color: var(--red-300); }
-  .phone {
-    display: flex; align-items: center; gap: 14px; background: #fff; border-radius: 999px; padding: 14px 28px;
-    font-family: var(--font-mono); font-weight: 600; font-size: 32px; color: var(--emtiaz-navy); direction: ltr;
-  }
-  .phone small { font-family: var(--font-body); font-weight: 500; font-size: 22px; color: var(--navy-400); direction: rtl; }
+  .phone { display: flex; align-items: center; gap: 12px; background: #fff; border-radius: 999px; padding: 12px 26px;
+    font-family: var(--font-mono); font-weight: 600; font-size: 30px; color: var(--emtiaz-navy); direction: ltr; }
+  .phone small { font-family: var(--font-body); font-weight: 500; font-size: 21px; color: var(--navy-400); direction: rtl; }
 </style>
 </head>
 <body>
 <div class="post" id="post">
-  <div class="top">
-    <img class="logo" src="../../assets/logo.jpg" alt="معمل امتياز">
-    <div class="eyebrow" id="eyebrow"></div>
-  </div>
-  <h1 class="headline"><span id="headline"></span><div class="sub" id="sub"></div></h1>
+  <div class="photo" id="photo"></div>
+  <div class="logo-badge"><img src="../../assets/logo.jpg" alt="معمل امتياز"></div>
+  <svg class="lens" id="lens" aria-hidden="true"></svg>
+  <div id="chips"></div>
 
-  <div class="stage">
-    <svg class="orbit" viewBox="0 0 720 620" aria-hidden="true">
-      <path d="M 128 520 A 300 270 0 1 1 640 470" fill="none" stroke="#E0302A" stroke-width="3" stroke-linecap="round"/>
-      <circle cx="128" cy="520" r="11" fill="#E0302A"/>
-      <circle cx="640" cy="470" r="11" fill="#E0302A"/>
-      <circle cx="672" cy="400" r="7" fill="#E0302A"/>
-      <circle cx="690" cy="330" r="7" fill="#E0302A"/>
-    </svg>
-    <div id="organ"></div>
-    <div id="chips"></div>
+  <div class="panel">
+    <div class="eyebrow" id="eyebrow"></div>
+    <h1 class="headline" id="headline"></h1>
+    <div class="sub" id="sub"></div>
   </div>
 
   <div class="bottom">
@@ -104,27 +83,34 @@
 </div>
 
 <script>
+/* lens: [cx, cy, r] in canvas px — the red orbit circles the focal point of each photo */
 const DESIGNS = {
   liver: {
     eyebrow: "LIVER FUNCTION",
-    headline: 'الكبد مبيشتكيش..<br><em>التحليل</em> هو اللي بيتكلم',
-    sub: "اطمّن على كبدك بتحليل وظائف الكبد",
-    img: "img/liver.png", label: "كبد 3D",
-    chips: [["ALT", 470, 40], ["AST", 22, 120], ["Bilirubin", 520, 250], ["Albumin", 0, 330], ["ALP", 500, 430], ["GGT", 70, 520, true]]
+    headline: 'بيشيل عنك كتير..<br>و<em>مبيشتكيش</em>',
+    sub: "زي الكبد بالظبط. اطمّن عليه بتحليل وظائف الكبد",
+    img: "img/liver.jpg",
+    scene: "أب شايل بنته على كتافه<br>في شارع منوّر بالليل<small>صورة واقعية — هتتولد بالـ Prompt رقم 1</small>",
+    lens: [560, 360, 250],
+    chips: [["ALT", 90, 250], ["AST", 120, 340], ["Bilirubin", 760, 560], ["Albumin", 790, 650]]
   },
   kidney: {
     eyebrow: "KIDNEY FUNCTION",
-    headline: 'كليتك فلتر شغال<br><em>24 ساعة</em>.. اطمّن عليه',
-    sub: "تحاليل وظائف الكلى تطمنك على الفلتر ده",
-    img: "img/kidney.png", label: "كلى 3D",
-    chips: [["Creatinine", 450, 40], ["Urea", 30, 130], ["Uric Acid", 500, 250], ["eGFR", 10, 340], ["Na · K", 510, 440], ["Urine Analysis", 40, 530, true]]
+    headline: 'زي الزير..<br>كليتك <em>بتصفّي</em> في صمت',
+    sub: "فلتر شغال 24 ساعة. اطمّن عليه بتحاليل وظائف الكلى",
+    img: "img/kidney.jpg",
+    scene: "إيدين ست كبيرة بتصبّ مية<br>من زير فخار في كوباية<small>صورة واقعية — هتتولد بالـ Prompt رقم 2</small>",
+    lens: [540, 470, 230],
+    chips: [["Creatinine", 80, 300], ["Urea", 110, 390], ["eGFR", 820, 560], ["Uric Acid", 770, 650]]
   },
   hpylori: {
     eyebrow: "H. PYLORI",
-    headline: 'في ضيف <em>مش باين</em>..<br>تحليل واحد يكشفه',
+    headline: 'في ضيف على السفرة..<br><em>مش باين</em>',
     sub: "تحليل جرثومة المعدة: أنتيجين في البراز",
-    img: "img/hpylori.png", label: "جرثومة + عدسة 3D",
-    chips: [["H. pylori Ag", 420, 50], ["Stool Test", 20, 280], ["Antigen", 500, 450, true]]
+    img: "img/hpylori.jpg",
+    scene: "سفرة عيلة مصرية من فوق<br>وإيدين كتير بتاخد من نفس الأطباق<small>صورة واقعية — هتتولد بالـ Prompt رقم 3</small>",
+    lens: [600, 470, 170],
+    chips: [["H. pylori Ag", 760, 300], ["Stool Antigen", 70, 660]]
   }
 };
 const key = new URLSearchParams(location.search).get("d") || "liver";
@@ -132,18 +118,33 @@ const d = DESIGNS[key];
 document.getElementById("eyebrow").textContent = d.eyebrow;
 document.getElementById("headline").innerHTML = d.headline;
 document.getElementById("sub").textContent = d.sub;
-const organ = document.getElementById("organ");
+
+const photo = document.getElementById("photo");
 const img = new Image();
-img.className = "organ"; img.alt = d.label;
-img.onload = () => organ.replaceChildren(img);
-img.onerror = () => { organ.innerHTML = `<div class="placeholder">${d.label}<br>هنا</div>`; };
+img.alt = "";
+img.onload = () => photo.replaceChildren(img);
+img.onerror = () => { photo.innerHTML = `<div class="placeholder"><div>${d.scene}</div></div>`; };
 img.src = d.img;
+
+const [cx, cy, r] = d.lens;
+const lens = document.getElementById("lens");
+lens.setAttribute("width", 1080); lens.setAttribute("height", 860);
+lens.setAttribute("viewBox", "0 0 1080 860");
+lens.style.left = 0; lens.style.top = 0;
+const a0 = 200 * Math.PI / 180, a1 = 500 * Math.PI / 180; // ~300° arc, open at the top-right like the logo
+const p = a => [cx + r * Math.cos(a), cy + r * Math.sin(a)];
+const [x0, y0] = p(a0), [x1, y1] = p(a1);
+const dots = [520, 538, 556].map(deg => p(deg * Math.PI / 180));
+lens.innerHTML = `
+  <path d="M ${x0} ${y0} A ${r} ${r} 0 1 1 ${x1} ${y1}" fill="none" stroke="#E0302A" stroke-width="4" stroke-linecap="round"/>
+  <circle cx="${x0}" cy="${y0}" r="11" fill="#E0302A"/><circle cx="${x1}" cy="${y1}" r="11" fill="#E0302A"/>
+  ${dots.map(([x, y]) => `<circle cx="${x}" cy="${y}" r="7" fill="#E0302A"/>`).join("")}`;
+
 const chips = document.getElementById("chips");
-for (const [t, x, y, hot] of d.chips) {
+for (const [t, x, y] of d.chips) {
   const c = document.createElement("div");
-  c.className = "chip" + (hot ? " hot" : "");
-  c.style.left = x + "px"; c.style.top = y + "px";
-  c.innerHTML = `<span class="ok">${hot ? "●" : "✓"}</span>${t}`;
+  c.className = "chip"; c.style.left = x + "px"; c.style.top = y + "px";
+  c.innerHTML = `<b>✓</b>${t}`;
   chips.appendChild(c);
 }
 document.fonts.ready.then(() => document.body.dataset.ready = "1");

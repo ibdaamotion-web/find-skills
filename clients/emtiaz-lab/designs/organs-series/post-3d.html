@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<title>Emtiaz Organs Series</title>
+<link rel="stylesheet" href="../../tokens.css">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { width: 1080px; height: 1350px; background: #fff; }
+  .post {
+    position: relative; width: 1080px; height: 1350px; overflow: hidden;
+    background:
+      radial-gradient(circle at 50% 56%, #EEF1F8 0, #EEF1F8 300px, rgba(238,241,248,0) 560px),
+      #FFFFFF;
+    font-family: var(--font-body); color: var(--emtiaz-ink);
+  }
+  /* faint grid like a lab sheet */
+  .post::before {
+    content: ""; position: absolute; inset: 0;
+    background-image:
+      linear-gradient(rgba(43,49,99,.045) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(43,49,99,.045) 1px, transparent 1px);
+    background-size: 54px 54px;
+    mask-image: radial-gradient(circle at 50% 55%, #000 0, transparent 70%);
+  }
+  .top { position: absolute; top: 64px; right: 72px; left: 72px; display: flex; justify-content: space-between; align-items: flex-start; }
+  .logo { width: 150px; height: 150px; mix-blend-mode: multiply; }
+  .eyebrow {
+    font-family: var(--font-mono); font-weight: 600; font-size: 22px; letter-spacing: .18em;
+    color: var(--emtiaz-red); direction: ltr; margin-top: 22px;
+  }
+  .headline {
+    position: absolute; top: 230px; right: 72px; left: 72px;
+    font-family: var(--font-display); font-weight: 700; color: var(--emtiaz-navy);
+    font-size: 76px; line-height: 1.18; letter-spacing: -.01em;
+  }
+  .headline em { font-style: normal; color: var(--emtiaz-red); }
+  .sub { margin-top: 18px; font-family: var(--font-body); font-weight: 500; font-size: 30px; color: var(--navy-400); }
+
+  /* stage: orbit + 3D organ */
+  .stage { position: absolute; top: 470px; left: 50%; width: 720px; height: 620px; transform: translateX(-50%); }
+  .orbit { position: absolute; inset: 0; }
+  .organ {
+    position: absolute; left: 50%; top: 50%; width: 520px; height: 520px; transform: translate(-50%, -50%);
+    object-fit: contain; filter: drop-shadow(0 40px 40px rgba(26,31,69,.18));
+  }
+  .placeholder {
+    position: absolute; left: 50%; top: 50%; width: 440px; height: 440px; transform: translate(-50%, -50%);
+    border-radius: 50%; display: grid; place-items: center; text-align: center;
+    background: radial-gradient(circle at 35% 30%, #fff 0, #D9DAE3 45%, #8A8EA9 100%);
+    box-shadow: 0 40px 60px rgba(26,31,69,.18), inset -20px -30px 60px rgba(26,31,69,.25);
+    font-family: var(--font-display); font-weight: 600; font-size: 30px; color: var(--emtiaz-navy);
+  }
+  .chip {
+    position: absolute; direction: ltr; white-space: nowrap;
+    display: inline-flex; align-items: center; gap: 12px;
+    padding: 14px 22px; border-radius: 16px; background: #fff;
+    border: 1.5px solid var(--navy-100);
+    box-shadow: 0 12px 28px rgba(26,31,69,.10);
+    font-family: var(--font-mono); font-weight: 600; font-size: 24px; color: var(--emtiaz-navy);
+  }
+  .chip .ok { color: var(--emtiaz-navy); }
+  .chip.hot { border-color: var(--red-200); }
+  .chip.hot .ok { color: var(--emtiaz-red); }
+
+  .bottom {
+    position: absolute; bottom: 64px; right: 72px; left: 72px; height: 120px;
+    background: var(--emtiaz-navy); border-radius: 28px;
+    display: flex; align-items: center; justify-content: space-between; padding: 0 40px;
+  }
+  .tagline { font-family: var(--font-display); font-weight: 600; font-size: 30px; color: #fff; }
+  .tagline span { color: var(--red-300); }
+  .phone {
+    display: flex; align-items: center; gap: 14px; background: #fff; border-radius: 999px; padding: 14px 28px;
+    font-family: var(--font-mono); font-weight: 600; font-size: 32px; color: var(--emtiaz-navy); direction: ltr;
+  }
+  .phone small { font-family: var(--font-body); font-weight: 500; font-size: 22px; color: var(--navy-400); direction: rtl; }
+</style>
+</head>
+<body>
+<div class="post" id="post">
+  <div class="top">
+    <img class="logo" src="../../assets/logo.jpg" alt="معمل امتياز">
+    <div class="eyebrow" id="eyebrow"></div>
+  </div>
+  <h1 class="headline"><span id="headline"></span><div class="sub" id="sub"></div></h1>
+
+  <div class="stage">
+    <svg class="orbit" viewBox="0 0 720 620" aria-hidden="true">
+      <path d="M 128 520 A 300 270 0 1 1 640 470" fill="none" stroke="#E0302A" stroke-width="3" stroke-linecap="round"/>
+      <circle cx="128" cy="520" r="11" fill="#E0302A"/>
+      <circle cx="640" cy="470" r="11" fill="#E0302A"/>
+      <circle cx="672" cy="400" r="7" fill="#E0302A"/>
+      <circle cx="690" cy="330" r="7" fill="#E0302A"/>
+    </svg>
+    <div id="organ"></div>
+    <div id="chips"></div>
+  </div>
+
+  <div class="bottom">
+    <div class="tagline">نتيجة دقيقة.. <span>تطمّن قلبك</span></div>
+    <div class="phone"><small>احجز واتساب</small>01141130500</div>
+  </div>
+</div>
+
+<script>
+const DESIGNS = {
+  liver: {
+    eyebrow: "LIVER FUNCTION",
+    headline: 'الكبد مبيشتكيش..<br><em>التحليل</em> هو اللي بيتكلم',
+    sub: "اطمّن على كبدك بتحليل وظائف الكبد",
+    img: "img/liver.png", label: "كبد 3D",
+    chips: [["ALT", 470, 40], ["AST", 22, 120], ["Bilirubin", 520, 250], ["Albumin", 0, 330], ["ALP", 500, 430], ["GGT", 70, 520, true]]
+  },
+  kidney: {
+    eyebrow: "KIDNEY FUNCTION",
+    headline: 'كليتك فلتر شغال<br><em>24 ساعة</em>.. اطمّن عليه',
+    sub: "تحاليل وظائف الكلى تطمنك على الفلتر ده",
+    img: "img/kidney.png", label: "كلى 3D",
+    chips: [["Creatinine", 450, 40], ["Urea", 30, 130], ["Uric Acid", 500, 250], ["eGFR", 10, 340], ["Na · K", 510, 440], ["Urine Analysis", 40, 530, true]]
+  },
+  hpylori: {
+    eyebrow: "H. PYLORI",
+    headline: 'في ضيف <em>مش باين</em>..<br>تحليل واحد يكشفه',
+    sub: "تحليل جرثومة المعدة: أنتيجين في البراز",
+    img: "img/hpylori.png", label: "جرثومة + عدسة 3D",
+    chips: [["H. pylori Ag", 420, 50], ["Stool Test", 20, 280], ["Antigen", 500, 450, true]]
+  }
+};
+const key = new URLSearchParams(location.search).get("d") || "liver";
+const d = DESIGNS[key];
+document.getElementById("eyebrow").textContent = d.eyebrow;
+document.getElementById("headline").innerHTML = d.headline;
+document.getElementById("sub").textContent = d.sub;
+const organ = document.getElementById("organ");
+const img = new Image();
+img.className = "organ"; img.alt = d.label;
+img.onload = () => organ.replaceChildren(img);
+img.onerror = () => { organ.innerHTML = `<div class="placeholder">${d.label}<br>هنا</div>`; };
+img.src = d.img;
+const chips = document.getElementById("chips");
+for (const [t, x, y, hot] of d.chips) {
+  const c = document.createElement("div");
+  c.className = "chip" + (hot ? " hot" : "");
+  c.style.left = x + "px"; c.style.top = y + "px";
+  c.innerHTML = `<span class="ok">${hot ? "●" : "✓"}</span>${t}`;
+  chips.appendChild(c);
+}
+document.fonts.ready.then(() => document.body.dataset.ready = "1");
+</script>
+</body>
+</html>
