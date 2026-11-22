@@ -49,6 +49,14 @@
       "computedHash": "85e2df35826e3dda204d0dd9f1238d649eebcc1037dd8c6ee924304c19eed6e8",
       "installMode": "copy"
     },
+    "caveman": {
+      "source": "JuliusBrussee/caveman",
+      "commit": "70f4f34e834893ea9af9f4fc6022266bd56d18b1",
+      "sourceType": "github",
+      "skillPath": "skills/caveman/SKILL.md",
+      "computedHash": "b51af74aacdadbc3c2d6bb79f05db58dc521854b87f7ffabd48faf286a81ed31",
+      "installMode": "copy"
+    },
     "client-revisions": {
       "source": "iart-ai/freelance-motion-skills",
       "commit": "9f294eb6df73cde7e2dea235f42275df11a16466",
