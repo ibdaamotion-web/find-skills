@@ -1,0 +1,21 @@
+{
+  "client": "معمل امتياز للتحاليل الطبية",
+  "tagline": "نتيجة دقيقة.. تطمّن قلبك",
+  "phone": "01141130500",
+  "services": ["سحب منزلي", "حجز بالواتساب"],
+  "logo": "assets/logo.jpg",
+  "colors": {
+    "white": "#FFFFFF",
+    "navy": "#2B3163",
+    "ice": "#EEF1F8",
+    "slate": "#8A8FA8",
+    "red": "#E0302A",
+    "ink": "#1A1F45"
+  },
+  "colorRatio": { "white": 0.55, "navy": 0.25, "ice": 0.10, "slate": 0.06, "red": 0.04 },
+  "fonts": {
+    "display": { "family": "Readex Pro", "weights": [600, 700] },
+    "body": { "family": "IBM Plex Sans Arabic", "weights": [400, 500] },
+    "mono": { "family": "IBM Plex Mono", "weights": [400, 600] }
+  }
+}

@@ -1,0 +1,20 @@
+/* معمل امتياز — design tokens (client brand) */
+@import url('https://fonts.googleapis.com/css2?family=Readex+Pro:wght@600;700&family=IBM+Plex+Sans+Arabic:wght@400;500&family=IBM+Plex+Mono:wght@400;600&display=swap');
+
+:root {
+  --emtiaz-white: #FFFFFF;
+  --emtiaz-navy: #2B3163;
+  --emtiaz-ice: #EEF1F8;
+  --emtiaz-slate: #8A8FA8;
+  --emtiaz-red: #E0302A;
+  --emtiaz-ink: #1A1F45;
+
+  --red-900: #701815; --red-700: #A82420; --red-500: #E0302A; --red-400: #E75E59;
+  --red-300: #EE8D8A; --red-200: #F4B7B4; --red-100: #F9DAD9; --red-50: #FDF1F0;
+  --navy-900: #12152E; --navy-700: #1A1F45; --navy-500: #2B3163; --navy-400: #5A5E85;
+  --navy-300: #8A8EA9; --navy-200: #B5B7C8; --navy-100: #D9DAE3; --navy-50: #EEF1F8;
+
+  --font-display: 'Readex Pro', sans-serif;      /* 600/700 */
+  --font-body: 'IBM Plex Sans Arabic', sans-serif; /* 400/500 */
+  --font-mono: 'IBM Plex Mono', monospace;       /* 400/600 */
+}
