@@ -7,3 +7,12 @@
   - If it's unclear whether a request is for the agency or a client, ask once.
 - Tools the user has: Google Flow (video generation) and ElevenLabs (voice). Everything else must be free / open source — don't propose paid subscriptions.
 - Skills live in `.claude/skills/` (guide: `STUDIO-SKILLS-AR.md`). Start client jobs with `ibdaa-studio-workflow`; social posts with `ibdaa-social-media`.
+
+## Token economy (always on)
+- Short replies: answer first, no greetings/recaps/closers, no repeating what the user said. Full detail only in deliverables (scripts, prompts, captions, briefs) — never shorten those.
+- Ask before heavy work (cloning big repos, rendering long/4K video, bulk image reads, web research, subagents). Prefer one targeted search/read over broad sweeps; read only the needed part of big files.
+- Don't re-read files or images already in context; don't re-describe images the user sent.
+- Batch independent tool calls; keep tool output small (`head`, `--stat`, quiet flags).
+- Use built-in knowledge for routine craft questions; search the web only for facts that change (prices, specs, dates).
+- One job per session: when a job is done, suggest starting a fresh session for the next one instead of growing this one.
+- Optional extra-terse mode: `/caveman` (stop with "normal mode").
