@@ -1,5 +1,24 @@
 # Prompts — صور واقعية بناس (النسخة المعتمدة)
 
+## الطريقة المعتمدة: كولاج واحد ونقصه
+بنولّد صورة واحدة طولية (1024×1536) فيها التلات مشاهد فوق بعض، وبعدين نقصها:
+`python3 split_collage.py path/to/collage.png` ← بيطلّع `img/liver.jpg` و `img/kidney.jpg` و `img/hpylori.jpg`
+وبعدين `node render.js export` (مع `NODE_PATH=$(npm root -g)`).
+
+```
+A vertical collage image, portrait 2:3 (1024x1536), made of exactly 3 equal horizontal panels stacked from top to bottom, separated by thin pure-white lines (about 10px). All 3 panels are photorealistic, cinematic, editorial-quality photographs in one consistent color grade: warm natural skin and food tones, deep navy blue (#2B3163) shadows, very small red (#E0302A) accents. In every panel the main subject is in the CENTER of the panel with breathing room on the left and right. Authentic Egyptian people and settings. Absolutely no text, letters, logos or signage anywhere.
+
+PANEL 1 (top): An Egyptian father in his early 40s walking on a warm-lit Cairo street at night, carrying his little daughter (about 5) on his shoulders; she is asleep with her head resting on his head, he smiles softly. Slightly low angle, 50mm, shallow depth of field, warm bokeh shop lights.
+
+PANEL 2 (middle): Close-up of the hands of an elderly Egyptian woman with a simple gold ring, pouring clear sparkling water from a traditional Egyptian clay water jar (zeer / ullah) into a clear glass. Morning side light makes the water glow; droplets on the clay; softly blurred navy-and-white home interior. 85mm macro detail.
+
+PANEL 3 (bottom): Top-down bird's-eye flat lay of a warm Egyptian family lunch table — koshari, molokhia, rice, salad, baladi bread, tea — with many hands (adults and children) reaching into the same shared plates at once. White tablecloth, natural daylight, clean and joyful, no faces needed.
+```
+
+---
+
+## نفس المشاهد كل واحد لوحده (لو الكولاج طلع ضعيف)
+
 القواعد: صورة **عرضية 3:2 (1536×1024)**، واقعية تماماً، من غير أي كلام أو لوجو. الصورة بتتحفظ في `img/liver.jpg` و `img/kidney.jpg` و `img/hpylori.jpg`.
 لون الصورة: درجات دافية هادية مع لمسة كحلي في الظلال، عشان تمشي مع هوية امتياز (كحلي #2B3163 وأحمر #E0302A).
 
