@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<title>بورد مشروع - إبداع بيتحرك</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Alexandria:wght@400;600;800;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#F4F1EA; --paper:#EDE6D6; --white:#FFFDF8; --ink:#161514;
+    --orange:#FF5A20; --orange-dark:#E5470F; --teal:#13C2B5;
+    --muted:#6E6A62;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{width:1080px;height:1350px}
+  body{
+    font-family:'Alexandria',sans-serif; color:var(--ink);
+    background:var(--cream);
+    background-image:radial-gradient(rgba(22,21,20,.13) 1.4px, transparent 1.6px);
+    background-size:34px 34px; background-position:17px 17px;
+    padding:64px 64px 56px; display:flex; flex-direction:column; gap:30px; overflow:hidden;
+  }
+  body.dark{ --cream:#161514; --ink:#F4F1EA; --white:#22201E; --paper:#2A2724; --muted:#A39E94;
+    background-image:radial-gradient(rgba(244,241,234,.10) 1.4px, transparent 1.6px); }
+
+  header{display:flex;align-items:center;justify-content:space-between}
+  .brand{display:flex;align-items:center;gap:18px}
+  .brand svg{width:104px;height:64px}
+  .wordmark{font-weight:900;font-size:40px;line-height:1}
+  .wordmark b{color:var(--orange);font-weight:900}
+  .badge{font-weight:800;font-size:22px;color:var(--white);background:var(--ink);
+    padding:12px 24px;border-radius:999px}
+  body.dark .badge{color:#161514}
+
+  .title-block{display:flex;flex-direction:column;gap:14px}
+  .kicker{font-weight:800;font-size:24px;color:var(--teal)}
+  h1{font-weight:900;font-size:74px;line-height:1.12}
+  h1 .hl{color:var(--orange)}
+  .client{font-weight:600;font-size:26px;color:var(--muted)}
+
+  .gallery{flex:1;display:grid;gap:18px;min-height:0}
+  .gallery.n1{grid-template-columns:1fr}
+  .gallery.n2{grid-template-columns:1fr 1fr}
+  .gallery.n3{grid-template-columns:2fr 1fr;grid-template-rows:1fr 1fr}
+  .gallery.n3 .shot:first-child{grid-row:1 / span 2}
+  .gallery.n4{grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr}
+  .shot{position:relative;border-radius:28px;overflow:hidden;background:var(--paper);
+    box-shadow:0 14px 34px rgba(22,21,20,.14);border:3px solid var(--white)}
+  .shot:first-child{border-color:var(--teal)}
+  .shot img{width:100%;height:100%;object-fit:cover;display:block}
+  .shot .ph{position:absolute;inset:0;display:grid;place-items:center;
+    font-weight:800;font-size:26px;color:var(--muted)}
+  .shot .play{position:absolute;left:22px;bottom:22px;width:64px;height:64px;border-radius:50%;
+    background:var(--orange);display:grid;place-items:center;box-shadow:0 6px 0 var(--orange-dark)}
+  .shot .play::after{content:"";border-style:solid;border-width:13px 0 13px 21px;
+    border-color:transparent transparent transparent var(--white);margin-left:5px}
+
+  .meta{display:flex;align-items:center;justify-content:space-between;gap:20px}
+  .tags{display:flex;flex-wrap:wrap;gap:12px}
+  .tag{font-weight:800;font-size:22px;padding:10px 22px;border-radius:999px;
+    background:var(--white);border:2.5px solid var(--teal);color:var(--ink)}
+  .tag.main{background:var(--orange);border-color:var(--orange);color:#FFFDF8}
+  .stats{display:flex;gap:26px}
+  .stat{text-align:center}
+  .stat .v{font-weight:900;font-size:40px;color:var(--orange);line-height:1}
+  .stat .l{font-weight:600;font-size:18px;color:var(--muted);margin-top:6px}
+
+  footer{display:flex;align-items:center;justify-content:space-between;
+    background:var(--orange);color:#FFFDF8;border-radius:28px;padding:22px 30px;
+    box-shadow:0 8px 0 var(--orange-dark)}
+  .cta{font-weight:900;font-size:30px}
+  .contact{font-weight:600;font-size:22px;direction:ltr}
+</style>
+</head>
+<body>
+  <header>
+    <div class="brand">
+      <svg viewBox="0 0 520 320" aria-hidden="true">
+        <polygon points="30,160 270,28 270,292" fill="#FF5A20" stroke="#FF5A20" stroke-width="28" stroke-linejoin="round"/>
+        <rect x="360" y="92" width="136" height="40" rx="20" fill="#13C2B5"/>
+        <rect x="360" y="140" width="156" height="40" rx="20" fill="#FF5A20"/>
+        <rect x="360" y="188" width="136" height="40" rx="20" fill="#13C2B5"/>
+      </svg>
+      <div class="wordmark">إبداع <b>بيتحرك</b></div>
+    </div>
+    <div class="badge" id="badge">شغل جديد</div>
+  </header>
+
+  <section class="title-block">
+    <div class="kicker" id="kicker"></div>
+    <h1 id="title"></h1>
+    <div class="client" id="client"></div>
+  </section>
+
+  <section class="gallery" id="gallery"></section>
+
+  <section class="meta">
+    <div class="tags" id="tags"></div>
+    <div class="stats" id="stats"></div>
+  </section>
+
+  <footer>
+    <div class="cta" id="cta"></div>
+    <div class="contact" id="contact"></div>
+  </footer>
+
+<script>
+  // Fill the board from a data object. render_board.js calls this; you can also open the
+  // file in a browser with ?data=<url-encoded JSON> for a quick preview.
+  window.fillBoard = function (d) {
+    const $ = id => document.getElementById(id);
+    if (d.theme === 'dark') document.body.classList.add('dark');
+    $('badge').textContent = d.badge || 'شغل جديد';
+    $('kicker').textContent = d.kicker || '';
+    // Wrap the highlighted word (d.highlight) in orange, the rest stays ink.
+    const t = d.title || '';
+    $('title').innerHTML = '';
+    if (d.highlight && t.includes(d.highlight)) {
+      const [a, ...rest] = t.split(d.highlight);
+      $('title').append(a);
+      const s = document.createElement('span'); s.className = 'hl'; s.textContent = d.highlight;
+      $('title').append(s, rest.join(d.highlight));
+    } else $('title').textContent = t;
+    $('client').textContent = d.client ? 'العميل: ' + d.client : '';
+
+    const shots = (d.images || []).slice(0, 4);
+    const g = $('gallery'); g.innerHTML = ''; g.className = 'gallery n' + Math.max(1, shots.length);
+    (shots.length ? shots : [null]).forEach((src, i) => {
+      const el = document.createElement('div'); el.className = 'shot';
+      if (src) { const im = new Image(); im.src = src; el.append(im); }
+      else { const p = document.createElement('div'); p.className = 'ph'; p.textContent = 'ضع صور العمل هنا'; el.append(p); }
+      if (i === 0 && d.isVideo) { const p = document.createElement('div'); p.className = 'play'; el.append(p); }
+      g.append(el);
+    });
+
+    $('tags').innerHTML = '';
+    (d.tags || []).forEach((tx, i) => {
+      const s = document.createElement('span'); s.className = 'tag' + (i === 0 ? ' main' : ''); s.textContent = tx;
+      $('tags').append(s);
+    });
+    $('stats').innerHTML = '';
+    (d.stats || []).slice(0, 3).forEach(st => {
+      const s = document.createElement('div'); s.className = 'stat';
+      s.innerHTML = '<div class="v"></div><div class="l"></div>';
+      s.children[0].textContent = st.value; s.children[1].textContent = st.label;
+      $('stats').append(s);
+    });
+    $('cta').textContent = d.cta || 'عايز فكرتك تتحرك؟ كلمنا';
+    $('contact').textContent = d.contact || '';
+  };
+  const q = new URLSearchParams(location.search).get('data');
+  if (q) { try { window.fillBoard(JSON.parse(q)); } catch (e) {} }
+</script>
+</body>
+</html>

@@ -1,0 +1,20 @@
+{
+  "name": "إبداع بيتحرك",
+  "name_en": "Ibdaa Motion",
+  "colors": {
+    "cream":       { "hex": "#F4F1EA", "role": "الخلفية الأساسية", "share": "60%" },
+    "paper":       { "hex": "#EDE6D6", "role": "خلفية تانية وورق" },
+    "warm_white":  { "hex": "#FFFDF8", "role": "الكروت والموبايلات" },
+    "ink":         { "hex": "#161514", "role": "الكلام بس", "share": "15%" },
+    "orange":      { "hex": "#FF5A20", "role": "البطل: الكلمة المهمة والسعر", "share": "15%" },
+    "orange_dark": { "hex": "#E5470F", "role": "ظل البرتقالي والضغط" },
+    "teal":        { "hex": "#13C2B5", "role": "المساعد: إطارات وتفاصيل", "share": "10%" }
+  },
+  "font": {
+    "family": "Alexandria",
+    "source": "https://fonts.google.com/specimen/Alexandria",
+    "weights": { "headline": 900, "subhead": 800, "body": 600 }
+  },
+  "texture": "نقط خفيفة (dot grid) على الكريمي + ظل ناعم",
+  "wordmark": { "word1": "إبداع", "word1_color": "ink", "word2": "بيتحرك", "word2_color": "orange" }
+}

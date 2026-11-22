@@ -1,0 +1,13 @@
+{
+  "badge": "شغل جديد",
+  "kicker": "موشن جرافيك · إعلان 30 ثانية",
+  "title": "إعلان إطلاق منتج بيتحرك",
+  "highlight": "بيتحرك",
+  "client": "اسم العميل",
+  "images": ["sample-shot-1.png", "sample-shot-2.png", "sample-shot-1.png"],
+  "isVideo": true,
+  "tags": ["موشن جرافيك", "تعليق صوتي", "مونتاج"],
+  "stats": [{ "value": "30ث", "label": "المدة" }, { "value": "4K", "label": "الجودة" }],
+  "cta": "عايز فكرتك تتحرك؟ كلمنا",
+  "contact": "fb.com/ibdaamotion"
+}
