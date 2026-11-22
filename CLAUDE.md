@@ -7,6 +7,7 @@
   - If it's unclear whether a request is for the agency or a client, ask once.
 - Tools the user has: Google Flow (video generation) and ElevenLabs (voice). Everything else must be free / open source — don't propose paid subscriptions.
 - Skills live in `.claude/skills/` (guide: `STUDIO-SKILLS-AR.md`). Start client jobs with `ibdaa-studio-workflow`; social posts with `ibdaa-social-media`.
+- **Skills on demand:** if a job would benefit from a skill that isn't installed (see `SKILLS-ON-DEMAND.md`, or any free skill found with `npx skills find`), tell the user which one, why, and ask before installing it. Never install silently.
 
 ## Token economy (always on)
 - Short replies: answer first, no greetings/recaps/closers, no repeating what the user said. Full detail only in deliverables (scripts, prompts, captions, briefs) — never shorten those.
