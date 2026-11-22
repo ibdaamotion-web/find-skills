@@ -5,9 +5,14 @@ description: Social media for the Ibdaa Motion agency (إبداع بيتحرك) 
 
 # Ibdaa Social Media
 
-Write like a sharp Egyptian creative, not a translated brochure. For the agency's own page apply
-`ibdaa-motion-brand` (colors, voice, project board). For a client, ask for their brand/voice first
-and never put Ibdaa branding on client posts unless asked.
+Write like a sharp Egyptian creative, not a translated brochure.
+
+**Two kinds of pages — never mix them:**
+- **صفحة إبداع بيتحرك** = the agency's own showroom page. Posts here sell the agency: portfolio
+  boards, behind the scenes, tips, offers. Apply `ibdaa-motion-brand` (colors, voice, board).
+- **Client pages** = content we produce for clients. Written in the client's voice, designed in the
+  client's brand, signed by the client. No Ibdaa branding, logo or hashtags unless the user asks.
+When a request doesn't say which page, ask once.
 
 ## 1. Before writing: 4 questions (skip what's already known)
 1. Page: Ibdaa Motion or a client? (client name, field, audience, city)

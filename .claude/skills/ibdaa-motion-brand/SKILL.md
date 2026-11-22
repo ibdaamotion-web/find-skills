@@ -1,12 +1,26 @@
 ---
 name: ibdaa-motion-brand
-description: Brand identity of the Egyptian ad agency "إبداع بيتحرك" (Ibdaa Motion) - colors, font, logo, tone of voice - plus a ready template that renders a Facebook project board (1080x1350) after every finished job. Use whenever making any design, motion graphic, video, thumbnail, social post, presentation or board for Ibdaa Motion or when the user says "الهوية", "البورد", "بوست الفيسبوك", "إبداع بيتحرك".
+description: Brand identity of the Egyptian ad agency "إبداع بيتحرك" (Ibdaa Motion) - colors, font, logo, tone of voice - plus a ready template that renders a Facebook project board (1080x1350) after every finished job. Ibdaa Motion is the PRODUCER studio, not the client: use this identity only for the agency's own page and marketing (portfolio boards, its own posts, its own intro/outro, proposals and invoices sent from the agency) - never as the look of client deliverables. Triggers: "الهوية", "البورد", "صفحة إبداع بيتحرك", "بوست للصفحة بتاعتنا".
 ---
 
 # إبداع بيتحرك — Brand Skill
 
 Ibdaa Motion is an Arabic (Egyptian) agency for graphic motion, graphic design, video editing
-and AI content. Every output for the agency follows this identity. Reference images:
+and AI content.
+
+## Scope — who wears this identity (read first)
+**إبداع بيتحرك is the studio that MAKES the work for clients. It is not the client.**
+- ✅ Use this identity for: the agency's own Facebook/Instagram page, the portfolio board after each
+  job, the agency's own promos/offers, its proposals, quotes, invoices and presentations to clients.
+- ❌ Do NOT use it for client deliverables. A client's ad, reel, logo, post or video uses the
+  **client's** brand (their colors, fonts, logo, voice). If the client has no brand, design a fitting
+  one for them (e.g. with `brand-identity`) — never default to Ibdaa's cream/orange/teal.
+- No Ibdaa logo or watermark on client work unless the user explicitly asks (e.g. a small credit).
+- The portfolio board is where the two meet: Ibdaa's frame and colors around the client's work,
+  showing the client's visuals unchanged.
+- If it's unclear whether a request is for the agency or for a client, ask once.
+
+Every output for the agency's own channels follows this identity. Reference images:
 `assets/logo-reference.png` (main logo) and `assets/brand-guide-reference.png` (official guide).
 Machine-readable tokens: `assets/brand-tokens.json`.
 
