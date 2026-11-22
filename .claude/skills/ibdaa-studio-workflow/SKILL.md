@@ -7,13 +7,18 @@ description: Production workflow for the Ibdaa Motion agency - turning a client 
 
 The director (the user) generates video in **Google Flow** and voices in **ElevenLabs**.
 Claude's job: ideas, scripts, storyboards, prompts, edit plans, code-driven motion graphics,
-and quality review. Always apply the `ibdaa-motion-brand` skill when the work is for the agency's
-own channels; for client work use the client's brand if given.
+and quality review.
+
+**Ibdaa Motion (إبداع بيتحرك) is the producer, not the client.** Client work is made in the
+**client's** brand — collect their logo, colors, fonts and voice in the brief; if they have none,
+propose one for them. Never style client deliverables with Ibdaa's identity or add Ibdaa's logo
+unless the user asks. Use `ibdaa-motion-brand` only for the agency's own page/promos and for the
+portfolio board that presents the finished client work.
 
 Everything recommended must be free: open-source tools or free tiers the user already has.
 
 ## 1. Brief → plan (ask only what's missing)
-Client, product, goal (awareness / sales / launch), platform + aspect ratio
+Client, **client's brand assets (logo, colors, fonts, voice) or none**, product, goal (awareness / sales / launch), platform + aspect ratio
 (Reels/TikTok 9:16, Feed 4:5, YouTube 16:9), duration, language/dialect, voice gender + tone,
 must-say items (price, offer, phone), deadline.
 
