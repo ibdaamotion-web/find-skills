@@ -9,6 +9,11 @@
 - Skills live in `.claude/skills/` (guide: `STUDIO-SKILLS-AR.md`). Start client jobs with `ibdaa-studio-workflow`; social posts with `ibdaa-social-media`.
 - **Skills on demand:** if a job would benefit from a skill that isn't installed (see `SKILLS-ON-DEMAND.md`, or any free skill found with `npx skills find`), tell the user which one, why, and ask before installing it. Never install silently.
 
+## Text in designs (always on)
+- Text must never overlap other text, touch it, or run outside the canvas or safe margins. Every line must be fully readable at full resolution.
+- Lay text out in a flow (stacked blocks with fixed gaps), not hand-placed absolute positions that collide when copy changes. Long copy shrinks to fit or gets rewritten; it never pushes into the next block.
+- Before delivering any static design, run an automated text-collision check on the render (example: `clients/emtiaz-lab/designs/organs-series/render.js`). Then view it at 100% (not only a thumbnail). Fix every hit before sending.
+
 ## Additions while a task is running (always on)
 - When the user sends a new instruction or addition while work is in progress, read it at the very next step and **fold it into the current work immediately**: update the plan, redo only the affected parts, keep going. Don't finish the old plan first and handle the addition afterwards.
 - One line to acknowledge what changed (e.g. «تمام، ضفت X وهكمل بيه»). If it conflicts with work already done, say so in one line and follow the newest instruction.
