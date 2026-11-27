@@ -64,6 +64,20 @@ Re-check the client's or channel's spec if they give one; theirs wins.
 - **Stereo width** – widen music, keep voice centered and mono-compatible.
 Recipes for all of these: `references/ffmpeg-audio-recipes.md`.
 
+## Room echo / reverb removal (de-reverb) — tested on Quran recitation
+When the voice sounds like it was recorded in an empty room (echo, boxy "وشة", "صوت مايك"), EQ and
+gates can't fix it. Use the free Mel-Band RoFormer de-reverb model (anvuew, mono, SDR 20.4, Hugging Face):
+1. Setup once (installs PyTorch ~3 GB on the machine it runs on; ask the user first): `bash scripts/dereverb/setup.sh WORKDIR`
+2. Pick the cleanest single channel (check L/R correlation — a mono sum of a weird stereo file can sound worse), 48 kHz WAV.
+3. Dry voice: `python3 scripts/dereverb/roformer_dereverb.py WORKDIR WORKDIR/models/dereverb_mel_band_roformer_anvuew.yaml WORKDIR/models/dereverb_mel_band_roformer_mono_anvuew_sdr_20.4029.ckpt in.wav dry.wav` (CPU ≈ 8 min per audio minute — test on one minute first).
+4. Choose the amount, and send the user 2 short samples to pick from:
+   - **Keep part of the original echo** (the most natural "روح"): `scripts/dereverb/keep_reverb.py original.wav dry.wav 0.5 out.wav` (0.35–0.5).
+   - **Fully dry + subtle warm hall** with smooth pauses: `scripts/dereverb/polish_recitation.py dry.wav out.wav -20` (−20 barely there, −16 more).
+5. Then: gentle denoise (`afftdn`), low-pass at the source's real bandwidth if it's band-limited (removes hiss), light compression ≤1.6:1, two-pass loudnorm −14 LUFS.
+What didn't work (don't repeat): UVR `Reverb_HQ_By_FoxJoy.onnx` sounded digital; ElevenLabs Voice Isolator ruined the recitation; notching "room peaks" in recitation cuts the reciter's own harmonics.
+
+**Quran recitation rules:** never auto-tune or change pitch/maqam; never cut the reciter's madd or repetitions; remove only breaths/long silences, and keep pauses smooth (fades, no hard gates).
+
 ## Rules
 - Never clip: no sample above −1 dBTP after the limiter; check with `analyze.sh`.
 - Process the voice alone first, then mix. Effects on the whole mix only for global moves (loudness, final limiter).
