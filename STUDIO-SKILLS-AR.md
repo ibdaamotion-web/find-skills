@@ -146,7 +146,7 @@ npx skills add iart-ai/freelance-motion-skills  # شغل العملاء
 
 | المجال | السكيلز |
 |---|---|
-| الهوية والإنتاج والسوشيال (بتوعنا) | `ibdaa-motion-brand`, `ibdaa-studio-workflow`, `ibdaa-social-media`, `ibdaa-audio-engineer` (هندسة صوت بـ FFmpeg) |
+| الهوية والإنتاج والسوشيال (بتوعنا) | `ibdaa-motion-brand`, `ibdaa-studio-workflow`, `ibdaa-social-media`, `ibdaa-audio-engineer` (هندسة صوت بـ FFmpeg), `ibdaa-media-understanding` (أشوف الفيديو وأفرّغ الصوت بـ Whisper) |
 | المونتاج | `ffmpeg-skill` |
 | موشن بالكود — Remotion | `remotion-best-practices`, `remotion-create`, `remotion-captions`, `remotion-markup`, `remotion-multimedia`, `remotion-maps`, `remotion-render`, `remotion-studio`, `remotion-docs`, `remotion-license`, `remotion-video` |
 | موشن بالكود — HyperFrames | `hyperframes`, `hyperframes-cli`, `hyperframes-registry`, `media-use`, `style-sampling`, `reverse-any-video`, `slideshow` |
