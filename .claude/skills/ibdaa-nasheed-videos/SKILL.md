@@ -129,6 +129,7 @@ High detail, sharp focus on him, photorealistic skin, no AI artifacts on hands.
   - مطر/نجوم/فوانيس بترعش — لو المشهد فيه كده.
 - **الكلمات**: متزامنة مع التفريغ، جوه الـ safe area (ريلز: فوق آخر 250px من تحت). كلمة «محمد ﷺ» / «صلى الله عليه وسلم» ممكن تاخد إبراز ذهبي.
 - **المقاسات**: ريلز 1080×1920، 30fps، H.264، AAC 320k.
+- **الريندر**: `render_text.js` (كروت الكلام بـ Chromium — تشكيل عربي سليم، ظل غامق علشان الجلابية البيضا) ← `render_nasheed.py <dir> config.json` (zoom بطيء، glow بيتنفس/flicker للمبات والشموع، ذرات نور، مطر على الشباك بماسك حوالين الراس، تموّج دخان، light leak خفيف، كروت الكلام). مثال كامل: `example_config_kefaya.json` (الإحداثيات بمقاس الصورة الأصلية). ~0.23ث/فريم.
 - **سكريبتات جاهزة** في `scripts/`: `transcribe.py` (يفك الصوت بـ ffmpeg — فويس واتساب ogg بيوقع مع PyAV)، `master.sh` (سلسلة الصوت + ريفيرب `mosque_ir.wav` + loudness).
 - **الأدوات**: faster-whisper، FFmpeg، HyperFrames/Canvas للإضاءة والكلمات — كلها مجانية.
 
