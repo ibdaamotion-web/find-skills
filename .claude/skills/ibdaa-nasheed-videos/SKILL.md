@@ -37,6 +37,12 @@ description: Rules and pipeline for the munshid (منشد) client project - turn
 - **عمق**: المنشد في المقدمة واضح، الخلفية فيها طبقات (قريب/بعيد) + ضباب خفيف.
 - **الكلمات على الشاشة**: سطر بسطر، ظهور ناعم (fade + blur خفيف)، خط عربي مجاني: Aref Ruqaa أو Amiri للمدح، Reem Kufi للعناوين. لون أبيض كريمي مع glow ذهبي خفيف.
 
+## اللوك الثابت للمنشد (طلب العميل)
+
+- في **كل** صورة: المنشد بالجلابية البيضا + سماعة استوديو سودا على ودانه + مايك استوديو (condenser) على ستاند بـ pop filter قدامه، وبينشد فعلاً (فم مفتوح شوية، تعبير صادق).
+- اللي بيتغير كل مرة: **إيماءة الإنشاد** (إيد على الصدر، إيد مفتوحة، عيون مغمضة، بص لفوق) + **الخلفية** اللي ورا = مشهد معبّر عن الكلام بالظبط، زي «نافذة» على المعنى.
+- مرجع اللوك: صورة البلكونة والمساجد وقت الغروب (أول صورة بعتها العميل).
+
 ## الوضعيات (تتغير حسب المعنى — ممنوع نفس الوقفة في كل فيديو)
 
 | المعنى | الوضعية |
@@ -96,7 +102,8 @@ features, beard, skin tone and proportions 100% identical — do not beautify or
 change his identity. [Keep his clothing: … / Dress him in: …]
 
 Scene: {{BACKGROUND — expressive of the nasheed's meaning}}
-Pose: {{POSE from the pose table}}, natural and dignified.
+Signature look: he wears his white jalabiya and black over-ear studio headphones, singing passionately into a studio condenser microphone with a round pop filter on a black stand in front of him.
+Pose: {{SINGING GESTURE from the pose table}}, natural and dignified.
 Mood: spiritual, serene, cinematic, painterly realism.
 Lighting: warm golden key light from {{SOURCE/DIRECTION}}, soft rim light on
 his silhouette, gentle volumetric light rays and light haze in the air,
